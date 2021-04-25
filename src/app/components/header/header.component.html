@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="navbar">
+    <div class="title"><img src="../../../assets/nagarro-logo.svg"> </div>
+    <div>
+
+        <span><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/" class="nav-link">Login</a></span>
+        <span><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/register" class="nav-link">Register</a></span>
+        <span><a routerLink="/corona" class="nav-link">Live Covid Stats</a></span>
+        <span><a *ngIf="loginService.isUserLoggedIn()" routerLink="/ticket" class="nav-link">View Ticket</a></span>
+        <span><a *ngIf="loginService.isUserLoggedIn() && loginService.isEmployee()" routerLink="/raiseTicket"
+                class="nav-link">Raise Ticket</a></span>
+
+        <span><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></span>
+
+    </div>
+</mat-toolbar>
