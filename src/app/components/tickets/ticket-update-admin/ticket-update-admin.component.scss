@@ -1,0 +1,56 @@
+mat-grid-tile {
+    background-color: whitesmoke;
+}
+
+mat-grid-tile-header {
+    height: 30px !important;
+    font-size: 20px;
+}
+
+.container {
+    width: 100%;
+    padding: 5%;
+    text-transform: capitalize;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.form-button-back {
+    margin-left: 50px;
+    ;
+}
+
+.form-button {
+    margin-left: 90px;
+}
+
+small{
+    color: red;
+}

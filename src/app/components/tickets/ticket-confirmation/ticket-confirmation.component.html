@@ -1,0 +1,77 @@
+<mat-card id="print-section" class="example-card mat-elevation-z8">
+    <mat-card-header>
+        <mat-card-title>Ticket Details.</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Request Type:</td>
+                    <td>{{ historyState.requestType}}</td>
+                </tr>
+                <tr>
+                    <td>Priority</td>
+                    <td>{{ historyState.priority}}</td>
+                </tr>
+                <tr>
+                    <td>Travel from :</td>
+                    <td>{{ historyState.from}}</td>
+                </tr>
+                <tr>
+                    <td>Travel to :</td>
+                    <td>{{ historyState.travelCity}}</td>
+                </tr>
+                <tr>
+                    <td>Travel Start Date : </td>
+                    <td>{{ historyState.startDate }}</td>
+                </tr>
+                <tr>
+                    <td>Travel End Date : </td>
+                    <td>{{ historyState.endDate }}</td>
+                </tr>
+                <tr>
+                    <td>Passport Number : </td>
+                    <td>{{ historyState.passportNumber}}</td>
+                </tr>
+                <tr>
+                    <td>Expense Borned By :</td>
+                    <td>{{historyState.borneBy}}</td>
+                </tr>
+                <tr>
+                    <td>Project Name : </td>
+                    <td>{{historyState.projectName}}</td>
+                </tr>
+                <tr>
+                    <td>Travel Approved By:</td>
+                    <td>{{historyState.approver}}</td>
+                </tr>
+                <tr>
+                    <td>Expected Duration of Travel :</td>
+                    <td>{{historyState.expectedDuration}}</td>
+                </tr>
+                <tr>
+                    <td>Upper Bound on Amount :</td>
+                    <td>{{historyState.allowedAmount}}</td>
+                </tr>
+                <tr>
+                    <td>Additional Details :</td>
+                    <td>{{historyState.extraDetails}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><a routerLink="/raiseTicket" [state]="{state:historyState}"><button type="button"
+                                mat-raised-button class="form-button" color="primary">Edit</button></a>
+                        <button type="button" mat-raised-button (click)="onSubmit()" class="form-button put-space"
+                            color="warn">Submit</button>
+
+                        <button type="button" [useExistingCss]="true" printTitle="Nagarro Travel Ticket Information"
+                            printSectionId="print-section" ngxPrint mat-raised-button class="form-button put-space"
+                            color="primary">Print Form</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </mat-card-content>
+</mat-card>

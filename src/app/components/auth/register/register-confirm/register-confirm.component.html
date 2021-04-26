@@ -1,0 +1,74 @@
+<!-- {{ state$ | json }} -->
+
+<mat-card id="print-section" class="example-card mat-elevation-z8">
+    <mat-card-header>
+        <mat-card-title>Registeration Details.</mat-card-title>
+        <!-- <mat-card-title *ngIf="!newUser">
+            This Email is already Registered.Please Return to Login.
+        </mat-card-title> -->
+    </mat-card-header>
+
+    <mat-card-content>
+        <table>
+            <tbody>
+                <tr>
+                    <td>First Name</td>
+                    <td>{{ state$.firstName}}</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td>{{ state$.lastName}}</td>
+                </tr>
+                <tr>
+                    <td>Business Unit</td>
+                    <td>{{ state$.businessUnit}}</td>
+                </tr>
+                <tr>
+                    <td>Title</td>
+                    <td>{{ state$.title}}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{ state$.email }}</td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td>{{ state$.phone }}</td>
+                </tr>
+                <tr>
+                    <td>Adress</td>
+                    <td>{{state$.address1}},{{state$.address2}}</td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td>{{state$.city}}</td>
+                </tr>
+                <tr>
+                    <td>Zip</td>
+                    <td>{{state$.zip}}</td>
+                </tr>
+                <tr>
+                    <td>State</td>
+                    <td>{{state$.state}}</td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>{{state$.country}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><a routerLink="/register" [state]="{state:state$}"><button type="button" mat-raised-button
+                                class="form-button" color="accent">Edit</button></a></td>
+                    <td><button type="button" mat-raised-button (click)="onSubmit()" class="form-button"
+                            color="accent">Submit & Return to Home Page</button></td>
+                    <td>
+                        <button type="button" [useExistingCss]="true" printTitle="Nagarro Travel Information"
+                            printSectionId="print-section" ngxPrint mat-raised-button class="form-button"
+                            color="accent">Print Form</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </mat-card-content>
+</mat-card>

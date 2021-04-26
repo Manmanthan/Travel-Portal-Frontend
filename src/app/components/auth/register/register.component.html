@@ -1,0 +1,113 @@
+<form class="normal-form" [formGroup]="regiForm">
+    <mat-grid-list cols="2" rowHeight="500px">
+        <mat-grid-tile class="tile">
+            <div class="controls-container">
+                <div class="mat-headline"> Register Yourself!</div>
+                <mat-form-field class="full-width">
+                    <input formControlName="firstName" matInput placeholder="First Name" required />
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.firstName.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input formControlName="lastName" matInput placeholder="Last Name" required />
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.lastName.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input formControlName="businessUnit" matInput placeholder="Business Unit" required />
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.businessUnit.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input formControlName="title" matInput placeholder="Title" required />
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.title.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input formControlName="email" matInput placeholder="Email Address" required />
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.email.errors?.required">This field is mandatory.</span>
+                        <span *ngIf="regiForm.controls.email.errors?.pattern">Please enter your official email address
+                            (eg: **@nagarro.com).</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input formControlName="phone" matInput placeholder="Phone Number" required>
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.phone.errors?.required">This field is mandatory.</span>
+                        <span *ngIf="regiForm.controls.phone.errors?.maxlength">Phone Number cannot exceed 15
+                            characters</span>
+                        <span *ngIf="regiForm.controls.phone.errors?.pattern">Phone Number should be numeric..</span>
+                    </mat-error>
+                    <mat-icon matSuffix>phone</mat-icon>
+                </mat-form-field>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile class="tile">
+            <div>
+
+                <mat-form-field class="full-width">
+                    <input formControlName="address1" matInput placeholder="Address1" required>
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.address1.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input formControlName="address2" matInput placeholder="Address2" />
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input formControlName="city" matInput placeholder="City" required />
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.city.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <input formControlName="zip" matInput placeholder="Zip" required />
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.zip.errors?.required">This field is mandatory.</span>
+                        <span *ngIf="regiForm.controls.zip.errors?.pattern">Zip should be numeric..</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-select formControlName="state" placeholder="State" required>
+                        <mat-option *ngFor="let st of states" [value]="st.state">
+                            {{st.state}}
+                        </mat-option>
+
+                    </mat-select>
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.state.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field class="put-space ">
+                    <mat-select formControlName="country" placeholder="Country" required>
+                        <mat-option *ngFor="let ct of countries" [value]="ct.country">
+                            {{ct.country}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.country.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+                <br>
+                <button type="button" mat-raised-button class="form-button" (click)="onFormSubmit()"
+                    [disabled]="!regiForm.valid" color="primary">Submit</button>
+                <button type="reset" mat-raised-button class="form-button" color="warn">Reset</button>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+
+</form>
+
+<!-- {{ regiForm.value | json}} -->

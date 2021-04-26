@@ -1,0 +1,75 @@
+<!-- {{historyState | json}} -->
+
+
+<mat-grid-list cols="2" rowHeight="240px">
+    <!--Details tile-->
+    <mat-grid-tile>
+        <mat-grid-tile-header>Process Request</mat-grid-tile-header>
+        <div class="container">
+            <mat-list>
+                <mat-list-item>Ticket Id : {{historyState.ticketId}}</mat-list-item>
+                <mat-list-item>Employee email : {{historyState.employee.username}}</mat-list-item>
+                <mat-list-item>Request Type: {{historyState.requestType}}</mat-list-item>
+                <mat-list-item>Priority: {{historyState.priority}}</mat-list-item>
+            </mat-list>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-grid-tile-header></mat-grid-tile-header>
+        <div class="container">
+            <mat-list>
+                <mat-list-item>Travel Request from {{historyState.from}} to {{historyState.travelCity}}</mat-list-item>
+                <mat-list-item>Travel Dates : {{historyState.startDate}} to {{historyState.endDate}}</mat-list-item>
+                <mat-list-item>Passport Number: {{historyState.passportNumber}}</mat-list-item>
+                <mat-list-item>Project Name: {{historyState.projectName}}</mat-list-item>
+            </mat-list>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="container">
+            <mat-list>
+                <mat-list-item>Expenses Borne by : {{historyState.borneBy}}</mat-list-item>
+                <mat-list-item>Travel Approved by: {{historyState.approver}}</mat-list-item>
+                <mat-list-item>Expected Duration: {{historyState.expectedDuration}}</mat-list-item>
+                <mat-list-item>Upper Bound on Allowed Amount: {{historyState.allowedAmount}}</mat-list-item>
+            </mat-list>
+        </div>
+    </mat-grid-tile>
+    <!--Editable details-->
+
+    <mat-grid-tile>
+        <div class="container">
+            <form [formGroup]="updateTicketForm">
+                <mat-form-field class="full-width">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="status">
+                        <mat-option value="InProcess">In Process</mat-option>
+                        <mat-option value="Done">Done</mat-option>
+                    </mat-select>
+                    <!-- <mat-error>
+                        <span *ngIf="addTicketForm.controls.requestType.errors?.required">This field is mandatory.</span>
+                    </mat-error> -->
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>Remarks</mat-label>
+                    <textarea autocomplete="off" matInput formControlName="remarks"></textarea>
+                    <!-- <mat-error>
+                        <span *ngIf="addTicketForm.controls.passportNumber.errors?.required">This field is mandatory.</span>
+                    </mat-error> -->
+                </mat-form-field>
+                <div>
+                    <label for="file">File</label>
+                    <input id="files" type="file" (change)="onFileChange($event)">
+                    <small>Upload a pdf file.</small>
+                </div>
+                <button class="form-button" mat-raised-button mat-button color="warn" (click)="submit()">Submit
+                    Details</button>
+                <button class="form-button-back" mat-raised-button mat-button color="primary"
+                    (click)="back()">Back</button>
+
+
+            </form>
+
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

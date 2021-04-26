@@ -1,0 +1,97 @@
+<mat-grid-list *ngIf="isDataAvailable" cols="2" rowHeight="507px">
+    <mat-grid-tile class="tile1">
+        <mat-grid-tile-header [style.background]="''">
+            Ticket Details
+            <span id="date">Submitted on: {{ticket.submitDate}}</span>
+        </mat-grid-tile-header>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Ticket ID : </td>
+                    <td>{{ticket.ticketId}}</td>
+                </tr>
+                <tr *ngIf="isAdmin">
+                    <td>Raised By :</td>
+                    <td>{{ticket.employee.username}}</td>
+                </tr>
+                <tr>
+                    <td>Status :</td>
+                    <td>{{ticket.status}}</td>
+                </tr>
+
+                <tr>
+                    <td>Request Type :</td>
+                    <td>{{ticket.requestType}}</td>
+                </tr>
+                <tr>
+                    <td>Priority :</td>
+                    <td>{{ticket.priority}}</td>
+                </tr>
+                <tr>
+                    <td>Start Date of Travel:</td>
+                    <td>{{ticket.startDate}}</td>
+                </tr>
+                <tr>
+                    <td>End Date of Travel: </td>
+                    <td>{{ ticket.endDate}}</td>
+                </tr>
+                <tr>
+                    <td>Passport Number Submitted :</td>
+                    <td>{{ticket.passportNumber}}</td>
+                </tr>
+                <tr>
+                    <td>Project Name :</td>
+                    <td>{{ticket.projectName}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </mat-grid-tile>
+    <mat-grid-tile class="tile2">
+        <mat-grid-tile-header [style.background]="''">
+            Travel from {{ticket.from}} to {{ticket.travelCity}}
+
+        </mat-grid-tile-header>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Expense Borne by :</td>
+                    <td>{{ticket.borneBy}}</td>
+                </tr>
+                <tr>
+                    <td>Travel Approver Name :</td>
+                    <td>{{ticket.approver}}</td>
+                </tr>
+                <tr>
+                    <td>Expected Duration of Travel :</td>
+                    <td>{{ticket.expectedDuration}}</td>
+                </tr>
+                <tr>
+                    <td>Upper Bound on the allowed amount:</td>
+                    <td>{{ticket.allowedAmount}}</td>
+                </tr>
+                <tr>
+                    <td>Any Additional Details :</td>
+                    <td>{{ticket.extraDetails}}</td>
+                </tr>
+                <tr>
+                    <td>Files Added By Admin :</td>
+                    <td><button id="download" (click)="download()"><a>{{ticket.downloadLink}}</a></button></td>
+                </tr>
+                <tr>
+                    <td>Remarks :</td>
+                    <td>{{ticket.remarks}}</td>
+                </tr>
+                <tr>
+                    <button type="button" (click)="onclick()" mat-raised-button class="form-button put-space"
+                        color="warn">Back</button>
+                    <button type="button" *ngIf="!isAdmin"
+                        [disabled]="ticket.status==='InProcess' || ticket.status==='Done'" routerLink="/editTicket"
+                        [state]="{state:ticket}" mat-raised-button class="form-button" color="warn">Edit</button>
+                    <button type="button" *ngIf="isAdmin" [disabled]="ticket.status==='Done'" routerLink="/admin/update"
+                        [state]="{state:ticket}" mat-raised-button class="form-button" color="warn">Edit</button>
+                </tr>
+            </tbody>
+        </table>
+    </mat-grid-tile>
+</mat-grid-list>

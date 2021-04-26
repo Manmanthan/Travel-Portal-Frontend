@@ -1,0 +1,50 @@
+<div class="mat-headline">We are in this together. We request you to please see the live covid status before raising a
+    ticket to destination.</div>
+
+<mat-card class="example-card mat-elevation-z8">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form">
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <span class="error" *ngIf="invalidLogin">Invalid Username or Password</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width" hideRequiredMarker appearance="outline"
+                            color="primary">
+                            <mat-label>Username</mat-label>
+                            <input matInput [(ngModel)]="username" name="username" required>
+                            <mat-hint>Enter your registered email address</mat-hint>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width" hideRequiredMarker appearance="outline"
+                            color="primary">
+                            <mat-label>Password</mat-label>
+                            <input matInput color="accent" [(ngModel)]="password" type="password" name="password">
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <app-forgot-password [email]="username">
+
+                    </app-forgot-password>
+                </tr>
+            </table>
+        </form>
+        <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="checkLogin()" color="accent">Login</button>
+
+
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,36 @@
+mat-grid-tile-header {
+    justify-content: space-between;
+    font-size: 20px;
+    height: 40px !important;
+}
+
+table {
+    width: calc(100% - 70px);
+    height: calc(100% - 70px);
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+mat-grid-tile {
+    background-color: whitesmoke;
+}
+
+#download {
+    outline: none;
+    border: none;
+    background-color: whitesmoke;
+    color: blue;
+    text-decoration: underline;
+}
+
+.form-button {
+    float: right;
+}
+
+mat-grid-tile-header {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.put-space {
+    margin-left: 50px;
+}
