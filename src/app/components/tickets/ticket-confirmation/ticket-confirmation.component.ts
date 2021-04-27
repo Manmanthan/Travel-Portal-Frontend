@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -14,6 +15,7 @@ export class TicketConfirmationComponent implements OnInit {
   constructor(
     public router: Router,
     private _http: UserService,
+    private _snackBar: MatSnackBar
   ) { }
 
   loadData() {
@@ -24,13 +26,17 @@ export class TicketConfirmationComponent implements OnInit {
   onSubmit() {
     this._http.raiseTicket(this.historyState).subscribe(
       response => {
-        alert("Thank You! Your Ticket has been raised Succesfully! We will start working on it soon.")
+        this.openSnackBar("Thank You! Your Ticket has been raised Succesfully! We will start working on it soon.", "Ok")
         this.router.navigateByUrl('/ticket')
       },
       error => {
         console.log(error)
       }
     );
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
   ngOnInit(): void {

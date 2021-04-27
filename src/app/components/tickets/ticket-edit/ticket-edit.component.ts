@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -43,8 +44,13 @@ export class TicketEditComponent implements OnInit {
     private fb: FormBuilder,
     public router: Router,
     private _http: UserService,
+    private _snackBar: MatSnackBar
   ) {
     this.minDate = new Date();
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
   ngOnInit(): void {
@@ -58,11 +64,11 @@ export class TicketEditComponent implements OnInit {
   onFormSubmit() {
     this._http.editTicket(this.editTicketForm.value).subscribe(
       response => {
-        alert("Thank You! Your Ticket has been Edited Succesfully! We will start working on it soon.")
-        this.router.navigateByUrl('/ticket')
+        this.openSnackBar("Thank You! Your Ticket has been Edited Succesfully! We will start working on it soon.", "Ok");
+        this.router.navigateByUrl('/ticket');
       },
       error => {
-        console.log(error)
+        console.log(error);
       }
     );
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -13,6 +14,7 @@ export class RegisterConfirmComponent implements OnInit {
   constructor(
     public router: Router,
     private _http: UserService,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -20,6 +22,10 @@ export class RegisterConfirmComponent implements OnInit {
       this.router.navigateByUrl("/register")
     }
     this.loadData();
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
   loadData() {
@@ -32,12 +38,12 @@ export class RegisterConfirmComponent implements OnInit {
 
   onSubmit() {
     this._http.register(this.state$).subscribe(response => {
-      alert("Thank You For Registering. You will soon get a mail with Login credentials.")
-      this.router.navigateByUrl('')
+      this.openSnackBar("Thank You For Registering. You will soon get a mail with Login credentials.", "Ok");
+      this.router.navigateByUrl('');
     },
       error => {
-        alert("User with this email is already registered")
-        this.router.navigateByUrl('')
+        this.openSnackBar("User with this email is already registered", "Ok");
+        this.router.navigateByUrl('');
       }
     );
   }

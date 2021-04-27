@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AdminService } from 'src/app/services/admin.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -21,8 +22,13 @@ export class TicketUpdateAdminComponent implements OnInit {
     private _loc: Location,
     private _router: Router,
     private fb: FormBuilder,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private _snackBar: MatSnackBar
   ) { }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
 
   ngOnInit(): void {
     this.historyState = history.state.state;
@@ -57,7 +63,7 @@ export class TicketUpdateAdminComponent implements OnInit {
         const file = this._file[0];
         /**If file uploaded is not pdf */
         if (file.type != "application/pdf") {
-          alert("Please upload only pdf file.")
+          this.openSnackBar("Please upload only pdf file.", "Ok");
           return false;
         }
         let formData: FormData = new FormData();
@@ -68,7 +74,7 @@ export class TicketUpdateAdminComponent implements OnInit {
           })
         );
         this.adminService.uploadFormDetails(formData).subscribe((response) => {
-          alert('Changes Updated Succesfully.');
+          this.openSnackBar('Changes Updated Succesfully.', "Ok");
           this._loc.back();
         },
           (error) => {
@@ -84,7 +90,7 @@ export class TicketUpdateAdminComponent implements OnInit {
         })
       );
       this.adminService.uploadFormDetails(formData).subscribe((response) => {
-        alert('Changes Updated Succesfully');
+        this.openSnackBar('Changes Updated Succesfully', "Ok");
         this._loc.back();
       },
         (error) => {

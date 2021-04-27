@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,16 +13,21 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private _snackBar: MatSnackBar
   ) { }
 
   receiveMail() {
     if (this.email != '') {
       this.userService.getMailWithCredentials(this.email!).subscribe((response) => {
-        alert("Mail has been sent with credentials")
+        this.openSnackBar("Mail has been sent with credentials", "Ok");
       })
     } else {
-      alert("Enter Username to Receive credentials.")
+      this.openSnackBar("Enter Username to Receive credentials.", "Ok");
     }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
   ngOnInit(): void {

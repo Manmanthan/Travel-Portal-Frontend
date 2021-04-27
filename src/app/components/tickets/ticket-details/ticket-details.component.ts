@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { UserService } from 'src/app/services/user.service';
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -20,8 +21,13 @@ export class TicketDetailsComponent implements OnInit {
     private userService: UserService,
     private _location: Location,
     private adminService: AdminService,
-    private _actRoute: ActivatedRoute
+    private _actRoute: ActivatedRoute,
+    private _snackBar: MatSnackBar
   ) { }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
 
   getTicket(): void {
     this.isAdmin = false;
@@ -51,7 +57,7 @@ export class TicketDetailsComponent implements OnInit {
         window.open(fileURL);
       },
       (error) => {
-        alert('Error while loading file.');
+        this.openSnackBar('Error while loading file.', "Ok");
       }
     );
   }
