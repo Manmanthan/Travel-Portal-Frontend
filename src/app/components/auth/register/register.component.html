@@ -60,15 +60,42 @@
                         <span *ngIf="regiForm.controls.address1.errors?.required">This field is mandatory.</span>
                     </mat-error>
                 </mat-form-field>
+
                 <mat-form-field class="full-width">
                     <input formControlName="address2" matInput placeholder="Address2" />
                 </mat-form-field>
+
+                <mat-form-field>
+                    <mat-select (selectionChange)="setCountry($any($event).value)" formControlName="country"
+                        placeholder="Country" required>
+                        <mat-option *ngFor="let country of countries" [value]="country.name">
+                            {{country.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.country.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="put-space">
+                    <mat-select formControlName="state" placeholder="State" required
+                        [disabled]="filteredStates === undefined">
+                        <mat-option *ngFor="let state of filteredStates" [value]="state.name">
+                            {{state.name}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <span *ngIf="regiForm.controls.state.errors?.required">This field is mandatory.</span>
+                    </mat-error>
+                </mat-form-field>
+
                 <mat-form-field class="full-width">
                     <input formControlName="city" matInput placeholder="City" required />
                     <mat-error>
                         <span *ngIf="regiForm.controls.city.errors?.required">This field is mandatory.</span>
                     </mat-error>
                 </mat-form-field>
+
                 <mat-form-field class="full-width">
                     <input formControlName="zip" matInput placeholder="Zip" required />
                     <mat-error>
@@ -76,29 +103,7 @@
                         <span *ngIf="regiForm.controls.zip.errors?.pattern">Zip should be numeric..</span>
                     </mat-error>
                 </mat-form-field>
-                <mat-form-field>
-                    <mat-select formControlName="state" placeholder="State" required>
-                        <mat-option *ngFor="let st of states" [value]="st.state">
-                            {{st.state}}
-                        </mat-option>
 
-                    </mat-select>
-                    <mat-error>
-                        <span *ngIf="regiForm.controls.state.errors?.required">This field is mandatory.</span>
-                    </mat-error>
-                </mat-form-field>
-
-
-                <mat-form-field class="put-space ">
-                    <mat-select formControlName="country" placeholder="Country" required>
-                        <mat-option *ngFor="let ct of countries" [value]="ct.country">
-                            {{ct.country}}
-                        </mat-option>
-                    </mat-select>
-                    <mat-error>
-                        <span *ngIf="regiForm.controls.country.errors?.required">This field is mandatory.</span>
-                    </mat-error>
-                </mat-form-field>
                 <br>
                 <button type="button" mat-raised-button class="form-button" (click)="onFormSubmit()"
                     [disabled]="!regiForm.valid" color="primary">Submit</button>
@@ -109,5 +114,3 @@
 
 
 </form>
-
-<!-- {{ regiForm.value | json}} -->
