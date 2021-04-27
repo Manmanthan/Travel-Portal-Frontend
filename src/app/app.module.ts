@@ -24,6 +24,9 @@ import { NgxPrintModule } from 'ngx-print';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { RegisterConfirmComponent } from './components/auth/register/register-confirm/register-confirm.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { LoaderComponent } from './components/loader/loader.component';
+import { LoaderService } from './services/loader.service';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     TicketRaiseComponent,
     RegisterComponent,
     RegisterConfirmComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +59,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule
   ],
   providers: [
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

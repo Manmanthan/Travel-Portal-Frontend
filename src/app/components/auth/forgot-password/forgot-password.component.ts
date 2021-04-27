@@ -20,6 +20,8 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.email != '') {
       this.userService.getMailWithCredentials(this.email!).subscribe((response) => {
         this.openSnackBar("Mail has been sent with credentials", "Ok");
+      }, error => {
+        this.openSnackBar("Error, please check the email provided", "Ok")
       })
     } else {
       this.openSnackBar("Enter Username to Receive credentials.", "Ok");
@@ -27,7 +29,9 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
   ngOnInit(): void {

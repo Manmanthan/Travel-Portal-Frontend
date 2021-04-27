@@ -50,7 +50,9 @@ export class TicketEditComponent implements OnInit {
   }
 
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
   ngOnInit(): void {
