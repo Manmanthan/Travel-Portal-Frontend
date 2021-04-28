@@ -1,15 +1,50 @@
-<mat-toolbar color="primary" class="navbar">
-    <div class="title"><img src="../../../assets/nagarro-logo.svg"> </div>
-    <div>
+<mat-toolbar color="primary">
+    <img src="../../../assets/nagarro-logo.svg">
+    <span class="example-spacer"></span>
 
-        <span><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/" class="nav-link">Login</a></span>
-        <span><a *ngIf="!loginService.isUserLoggedIn()" routerLink="/register" class="nav-link">Register</a></span>
-        <span><a routerLink="/corona" class="nav-link">Live Covid Stats</a></span>
-        <span><a *ngIf="loginService.isUserLoggedIn()" routerLink="/ticket" class="nav-link">View Ticket</a></span>
-        <span><a *ngIf="loginService.isUserLoggedIn() && loginService.isEmployee()" routerLink="/raiseTicket"
-                class="nav-link">Raise Ticket</a></span>
-
-        <span><a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">Logout</a></span>
-
+    <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+        <button routerLink="/corona" mat-button>
+            <mat-icon>pin_drop</mat-icon> Covid Status
+        </button>
+        <button *ngIf="!loginService.isUserLoggedIn()" routerLink="/" mat-button>
+            <mat-icon>face</mat-icon> Login
+        </button>
+        <button *ngIf="!loginService.isUserLoggedIn()" routerLink="/register" mat-button>
+            <mat-icon>perm_identity</mat-icon> Register
+        </button>
+        <button *ngIf="loginService.isUserLoggedIn()" routerLink="/ticket" mat-button>
+            <mat-icon>home</mat-icon> Home
+        </button>
+        <button *ngIf="loginService.isUserLoggedIn() && loginService.isEmployee()" routerLink="/raiseTicket" mat-button>
+            <mat-icon>transfer_within_a_station</mat-icon> Raise Ticket
+        </button>
+        <button *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" mat-button>
+            <mat-icon>exit_to_app</mat-icon> Logout
+        </button>
     </div>
+    <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+    </button>
 </mat-toolbar>
+
+<mat-menu x-position="before" #menu="matMenu">
+
+    <button *ngIf="!loginService.isUserLoggedIn()" routerLink="/" mat-menu-item>
+        <mat-icon>face</mat-icon> Login
+    </button>
+    <button *ngIf="!loginService.isUserLoggedIn()" routerLink="/register" mat-menu-item>
+        <mat-icon>perm_identity</mat-icon> Register
+    </button>
+    <button routerLink="/corona" mat-menu-item>
+        <mat-icon>pin_drop</mat-icon> Covid Status
+    </button>
+    <button *ngIf="loginService.isUserLoggedIn()" routerLink="/ticket" mat-menu-item>
+        <mat-icon>home</mat-icon> Home
+    </button>
+    <button *ngIf="loginService.isUserLoggedIn() && loginService.isEmployee()" routerLink="/raiseTicket" mat-menu-item>
+        <mat-icon>transfer_within_a_station</mat-icon> Raise Ticket
+    </button>
+    <button *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon> Logout
+    </button>
+</mat-menu>

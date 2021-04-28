@@ -27,6 +27,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderService } from './services/loader.service';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
     HttpClientModule,
     MaterialModule,
     NgxPrintModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    FlexLayoutModule
   ],
   providers: [
     LoaderService,
