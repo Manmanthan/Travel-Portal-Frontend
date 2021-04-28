@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
-    <img src="../../../assets/nagarro-logo.svg">
+    <a routerLink="/ticket"><img src="../../../assets/nagarro-logo.svg"></a>
     <span class="example-spacer"></span>
 
     <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-        <button routerLink="/corona" mat-button>
+        <button routerLink="/covid-stats" mat-button>
             <mat-icon>pin_drop</mat-icon> Covid Status
         </button>
         <button *ngIf="!loginService.isUserLoggedIn()" routerLink="/" mat-button>
@@ -35,7 +35,7 @@
     <button *ngIf="!loginService.isUserLoggedIn()" routerLink="/register" mat-menu-item>
         <mat-icon>perm_identity</mat-icon> Register
     </button>
-    <button routerLink="/corona" mat-menu-item>
+    <button routerLink="/covid-stats" mat-menu-item>
         <mat-icon>pin_drop</mat-icon> Covid Status
     </button>
     <button *ngIf="loginService.isUserLoggedIn()" routerLink="/ticket" mat-menu-item>

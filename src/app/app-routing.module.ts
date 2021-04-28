@@ -5,6 +5,7 @@ import { ForgotPasswordComponent } from './components/auth/forgot-password/forgo
 import { LogoutComponent } from './components/auth/logout/logout.component';
 import { RegisterConfirmComponent } from './components/auth/register/register-confirm/register-confirm.component';
 import { RegisterComponent } from './components/auth/register/register.component';
+import { CovidStatsComponent } from './components/covid-stats/covid-stats.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TicketConfirmationComponent } from './components/tickets/ticket-confirmation/ticket-confirmation.component';
 import { TicketDetailsComponent } from './components/tickets/ticket-details/ticket-details.component';
@@ -16,6 +17,7 @@ import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: "", component: AuthComponent },
+  { path: 'covid-stats', component: CovidStatsComponent },
   { path: 'forgotpassword', component: ForgotPasswordComponent },
   { path: 'register', component: RegisterComponent, },
   { path: 'confirm', component: RegisterConfirmComponent },

@@ -8,40 +8,63 @@
 
         <ng-container matColumnDef="tickedId">
             <mat-header-cell mat-sort-header *matHeaderCellDef> Ticket Number </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.ticketId}} </mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Ticket ID:</span>
+                {{element.ticketId}}
+            </mat-cell>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="from">
             <mat-header-cell mat-sort-header *matHeaderCellDef> Travel from </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.from}} </mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Travel from:</span>
+                {{element.from}}
+            </mat-cell>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="priority">
             <mat-header-cell mat-sort-header *matHeaderCellDef> Priority </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.priority}} </mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Priority:</span>
+                {{element.priority}}
+            </mat-cell>
         </ng-container>
         <!-- Weight Column -->
         <ng-container matColumnDef="travelCity">
             <mat-header-cell mat-sort-header *matHeaderCellDef> Travel to</mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.travelCity}} </mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Travel to:</span>
+                {{element.travelCity}}
+            </mat-cell>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="status">
             <mat-header-cell mat-sort-header *matHeaderCellDef> Status </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Status:</span>
+                {{element.status}}
+            </mat-cell>
         </ng-container>
         <!--Submit Date Column-->
         <ng-container matColumnDef="submitDate">
-            <mat-header-cell mat-sort-header *matHeaderCellDef> Submit Date </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.submitDate}} </mat-cell>
+            <mat-header-cell mat-sort-header *matHeaderCellDef>
+                Submit Date
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Submit Date:</span>
+                {{element.submitDate}}
+            </mat-cell>
         </ng-container>
         <!--Edit button-->
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-            <mat-cell *matCellDef="let element"> <button mat-raised-button color="warn">View or Edit</button></mat-cell>
+            <mat-cell *matCellDef="let element">
+                <span class="mobile-label">Action:</span>
+                <button mat-raised-button color="warn">View or Edit</button>
+            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

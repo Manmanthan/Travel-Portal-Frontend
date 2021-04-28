@@ -1,0 +1,15 @@
+<div class="container">
+    <mat-form-field>
+        <mat-select placeholder="Country" name="country" [(ngModel)]="country" required>
+            <mat-option *ngFor="let country of countries" [value]="country.name">
+                {{country.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="drawGraph()" class="btn">Click Here</button>
+</div>
+
+<div class="chart">
+    <canvas #myCanvas id="canvas">{{ chart }}</canvas>
+</div>

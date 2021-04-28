@@ -7,9 +7,21 @@
 }
 
 mat-toolbar {
-    height: 40px;
+    height: 50px;
 }
 
 .text {
     color: lightgray;
+}
+
+.title-center {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .app-toolbar {
+    position: fixed;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    bottom: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
 }

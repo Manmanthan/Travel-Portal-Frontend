@@ -28,6 +28,8 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { LoaderService } from './services/loader.service';
 import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CovidStatsComponent } from './components/covid-stats/covid-stats.component';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     RegisterComponent,
     RegisterConfirmComponent,
     LoaderComponent,
+    CovidStatsComponent,
   ],
   imports: [
     BrowserModule,
