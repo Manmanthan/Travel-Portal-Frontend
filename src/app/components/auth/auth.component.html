@@ -33,13 +33,9 @@
                         </mat-form-field>
                     </td>
                 </tr>
-                <tr>
-                    <app-forgot-password [email]="username">
-                    </app-forgot-password>
-                </tr>
+                <a class="forgot-password" routerLink='/forgotpassword'>Forgot Username & Password?</a>
             </table>
         </form>
-        <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button (click)="checkLogin()" color="accent">Login</button>

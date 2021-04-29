@@ -8,8 +8,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
-
-  @Input() email: string | undefined;
+  email: string = '';
+  invalidLogin = false;
+  // @Input() email: string | undefined;
 
   constructor(
     private userService: UserService,
