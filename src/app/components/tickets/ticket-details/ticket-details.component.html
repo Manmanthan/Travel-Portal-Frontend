@@ -1,4 +1,4 @@
-<mat-grid-list *ngIf="isDataAvailable" cols="2" rowHeight="507px">
+<mat-grid-list *ngIf="isDataAvailable" [cols]="breakpoint" rowHeight="507px" (window:resize)="onResize($event)">
     <mat-grid-tile class="tile1">
         <mat-grid-tile-header [style.background]="''">
             Ticket Details
@@ -52,6 +52,7 @@
             Travel from {{ticket.from}} to {{ticket.travelCity}}
 
         </mat-grid-tile-header>
+
         <table>
             <tbody>
                 <tr>

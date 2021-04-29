@@ -16,6 +16,8 @@ export class TicketDetailsComponent implements OnInit {
   ticket: any;
   isAdmin: boolean | undefined;
   isDataAvailable: boolean = false;
+  breakpoint: number | undefined;
+
 
   constructor(
     private userService: UserService,
@@ -24,6 +26,10 @@ export class TicketDetailsComponent implements OnInit {
     private _actRoute: ActivatedRoute,
     private _snackBar: MatSnackBar
   ) { }
+
+  onResize(event: any) {
+    this.breakpoint = (event.target.innerWidth <= 600) ? 1 : 2;
+  }
 
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
@@ -69,6 +75,7 @@ export class TicketDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 600) ? 1 : 2;
     //if user is admin then do a different http request.
     if (
       sessionStorage.getItem('username')?.localeCompare('admin@nagarro.com') == 0

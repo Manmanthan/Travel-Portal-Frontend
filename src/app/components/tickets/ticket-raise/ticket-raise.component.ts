@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class TicketRaiseComponent implements OnInit {
 
   minDate: Date | undefined;
+  breakpoint: any;
   addTicketForm = this.fb.group({
     requestType: ['', Validators.required],
     priority: ['', Validators.required],
@@ -59,9 +60,14 @@ export class TicketRaiseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 850) ? 1 : 2;
     if (history.state.state) {
       this.populateForm();
     }
+  }
+
+  onResize(event: any) {
+    this.breakpoint = (event.target.innerWidth <= 850) ? 1 : 2;
   }
 
   populateForm() {
