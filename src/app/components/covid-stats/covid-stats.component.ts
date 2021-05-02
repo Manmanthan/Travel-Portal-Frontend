@@ -45,7 +45,7 @@ export class CovidStatsComponent implements OnInit {
             ],
           },
           options: {
-            legend: { display: false, },
+            legend: { display: true, },
             maintainAspectRatio: false,
             responsive: true,
             scales: { xAxes: [{ display: true, },], yAxes: [{ display: true, },], },
