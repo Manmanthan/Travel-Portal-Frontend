@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss']
+  styleUrls: ['./forgot-password.component.scss'],
 })
 export class ForgotPasswordComponent implements OnInit {
   email: string = '';
@@ -32,7 +32,6 @@ export class ForgotPasswordComponent implements OnInit {
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
-      // verticalPosition: 'centre' as MatSnackBarVerticalPosition
     });
   }
 

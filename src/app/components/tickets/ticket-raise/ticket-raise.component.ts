@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,7 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TicketRaiseComponent implements OnInit {
 
-  minDate: Date | undefined;
+  todayDate = new Date();
+  minDate = new Date();
   breakpoint: any;
   addTicketForm = this.fb.group({
     requestType: ['', Validators.required],
