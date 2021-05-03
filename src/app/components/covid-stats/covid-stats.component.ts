@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CovidStatsService } from 'src/app/services/covid-stats.service';
 import { Chart } from 'chart.js';
 import * as countriesData from 'src/assets/countries.json';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class CovidStatsComponent implements OnInit {
 
 
   constructor(
-    private _service: CovidStatsService
+    private _service: CovidStatsService,
+    private _snackBar: MatSnackBar
   ) { }
 
   drawGraph(): void {
@@ -51,12 +53,23 @@ export class CovidStatsComponent implements OnInit {
             scales: { xAxes: [{ display: true, },], yAxes: [{ display: true, },], },
           },
         });
-      });
+      },
+        error => {
+          this.openSnackBar("Please select a country", "Ok")
+        });
 
     if (this.chart != null) {
       this.chart.destroy();
     }
 
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      panelClass: ['blue-snackbar'],
+      duration: 2000,
+      // verticalPosition: 'centre' as MatSnackBarVerticalPosition
+    });
   }
 
   formatCountry() {

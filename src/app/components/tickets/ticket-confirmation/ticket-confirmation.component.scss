@@ -18,3 +18,9 @@ tr {
 .put-space {
     margin-left: 50px;
 }
+
+@media print {
+    .noprint {
+       visibility: hidden;
+    }
+ }

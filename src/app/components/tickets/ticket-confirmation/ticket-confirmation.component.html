@@ -62,13 +62,13 @@
             <tfoot>
                 <tr>
                     <td><a routerLink="/raiseTicket" [state]="{state:historyState}"><button type="button"
-                                mat-raised-button class="form-button" color="primary">Edit</button></a>
-                        <button type="button" mat-raised-button (click)="onSubmit()" class="form-button put-space"
-                            color="warn">Submit</button>
+                                mat-raised-button class="noprint form-button" color="primary">Edit</button></a>
+                        <button type="button" mat-raised-button (click)="onSubmit()"
+                            class="noprint form-button put-space" color="warn">Submit</button>
 
                         <button type="button" [useExistingCss]="true" printTitle="Nagarro Travel Ticket Information"
-                            printSectionId="print-section" ngxPrint mat-raised-button class="form-button put-space"
-                            color="primary">Print Form</button>
+                            printSectionId="print-section" ngxPrint mat-raised-button
+                            class="noprint form-button put-space" color="primary">Print Form</button>
                     </td>
                 </tr>
             </tfoot>

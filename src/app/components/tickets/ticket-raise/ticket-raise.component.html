@@ -46,7 +46,7 @@
                         </mat-error>
                     </mat-form-field>
                     <!--Travel to City-->
-                    <mat-form-field>
+                    <mat-form-field class="put-space">
                         <mat-select formControlName="travelCity" placeholder="Travel To">
                             <mat-option *ngFor="let ct of cities" [value]="ct.city">
                                 {{ ct.city }}
@@ -69,7 +69,7 @@
                         </mat-error>
                     </mat-form-field>
                     <!--Travel End Date-->
-                    <mat-form-field>
+                    <mat-form-field class="put-space">
                         <mat-label>Travel End Date* </mat-label>
                         <input formControlName="endDate" autocomplete="off" matInput [min]="minDate"
                             [matDatepicker]="picker1" />

@@ -27,6 +27,10 @@ export class TicketDetailsComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) { }
 
+  printPage() {
+    window.print();
+  }
+
   onResize(event: any) {
     this.breakpoint = (event.target.innerWidth <= 965) ? 1 : 2;
   }

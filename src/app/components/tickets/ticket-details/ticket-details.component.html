@@ -1,6 +1,7 @@
-<mat-grid-list *ngIf="isDataAvailable" [cols]="breakpoint" rowHeight="507px" (window:resize)="onResize($event)">
-    <mat-grid-tile class="tile1">
-        <mat-grid-tile-header [style.background]="''">
+<mat-grid-list id="print-section" *ngIf="isDataAvailable" [cols]="breakpoint" rowHeight="507px"
+    (window:resize)="onResize($event)">
+    <mat-grid-tile>
+        <mat-grid-tile-header>
             Ticket Details
             <span id="date">Submitted on: {{ticket.submitDate}}</span>
         </mat-grid-tile-header>
@@ -47,10 +48,9 @@
             </tbody>
         </table>
     </mat-grid-tile>
-    <mat-grid-tile class="tile2">
-        <mat-grid-tile-header [style.background]="''">
+    <mat-grid-tile>
+        <mat-grid-tile-header class="noprint">
             Travel from {{ticket.from}} to {{ticket.travelCity}}
-
         </mat-grid-tile-header>
 
         <table>
@@ -84,13 +84,18 @@
                     <td>{{ticket.remarks}}</td>
                 </tr>
                 <tr>
-                    <button type="button" (click)="onclick()" mat-raised-button class="form-button put-space"
+                    <button mat-raised-button class="form-button put-space noprint" color="primary"
+                        printSectionId="print-section" (click)="printPage()">Print</button>
+
+                    <button type="button" (click)="onclick()" mat-raised-button class="form-button put-space noprint"
                         color="warn">Back</button>
                     <button type="button" *ngIf="!isAdmin"
                         [disabled]="ticket.status==='InProcess' || ticket.status==='Done'" routerLink="/editTicket"
-                        [state]="{state:ticket}" mat-raised-button class="form-button" color="warn">Edit</button>
+                        [state]="{state:ticket}" mat-raised-button class="form-button noprint"
+                        color="warn">Edit</button>
                     <button type="button" *ngIf="isAdmin" [disabled]="ticket.status==='Done'" routerLink="/admin/update"
-                        [state]="{state:ticket}" mat-raised-button class="form-button" color="warn">Edit</button>
+                        [state]="{state:ticket}" mat-raised-button class="form-button noprint"
+                        color="warn">Edit</button>
                 </tr>
             </tbody>
         </table>

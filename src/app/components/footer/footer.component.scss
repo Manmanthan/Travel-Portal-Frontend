@@ -7,7 +7,7 @@
 }
 
 mat-toolbar {
-    height: 50px;
+    height: 35px;
 }
 
 .text {
@@ -17,9 +17,9 @@ mat-toolbar {
 .title-center {
     flex: 1 1 auto;
     text-align: center;
-  }
+}
 
-  .app-toolbar {
+.app-toolbar {
     position: fixed;
     position: -webkit-sticky; /* For macOS/iOS Safari */
     bottom: 0; /* Sets the sticky toolbar to be on top */

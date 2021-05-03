@@ -34,3 +34,9 @@ mat-grid-tile-header {
 .put-space {
     margin-left: 50px;
 }
+
+@media print {
+    .noprint {
+       visibility: hidden;
+    }
+ }

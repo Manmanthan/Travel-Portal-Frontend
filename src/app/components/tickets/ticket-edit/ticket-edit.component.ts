@@ -14,6 +14,7 @@ export class TicketEditComponent implements OnInit {
   oldData: any;
   minDate: Date | undefined;
   editTicketForm: any;
+  breakpoint: any;
   cities = [
     { city: 'Vardenis' },
     { city: 'Martuni' },
@@ -49,6 +50,10 @@ export class TicketEditComponent implements OnInit {
     this.minDate = new Date();
   }
 
+  onResize(event: any) {
+    this.breakpoint = (event.target.innerWidth <= 850) ? 1 : 2;
+  }
+
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {
       duration: 2000,
@@ -56,6 +61,7 @@ export class TicketEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 850) ? 1 : 2;
     if (history.state.state == null) {
       this.router.navigateByUrl("/ticket")
     }
